@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgysxw5bc3nuc"]
+[gd_scene load_steps=6 format=3 uid="uid://dgysxw5bc3nuc"]
 
 [ext_resource type="Script" path="res://ScenesAndScripts/Main/level.gd" id="1_cxs5d"]
 [ext_resource type="PackedScene" uid="uid://4j6rgvk6bnyu" path="res://ScenesAndScripts/Control/conductor.tscn" id="2_ahisq"]
 [ext_resource type="AudioStream" uid="uid://be5bq6q174ndh" path="res://Assets/Audio/Music/disco-music.mp3" id="3_c2iep"]
 [ext_resource type="PackedScene" uid="uid://oeobihqqd5nn" path="res://ScenesAndScripts/Enemies/enemy.tscn" id="4_rw5ul"]
+[ext_resource type="PackedScene" uid="uid://fn4m76c8vuqi" path="res://ScenesAndScripts/Main/Player/player.tscn" id="5_pjbab"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_cxs5d")
@@ -13,3 +14,7 @@ stream = ExtResource("3_c2iep")
 volume_db = -30.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_rw5ul")]
+position = Vector2(0, 181)
+
+[node name="Player" parent="." instance=ExtResource("5_pjbab")]
+position = Vector2(282, 602)

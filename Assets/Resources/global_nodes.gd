@@ -1,4 +1,5 @@
 extends Resource
 class_name GlobalNodes
 
-var song_conductor 
+var song_conductor
+var enemy  
