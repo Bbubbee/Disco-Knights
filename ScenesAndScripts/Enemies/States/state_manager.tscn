@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://rmyciakku08f"]
+
+[ext_resource type="Script" path="res://ScenesAndScripts/Enemies/States/state_manager.gd" id="1_l71qf"]
+
+[node name="StateManager" type="Node"]
+script = ExtResource("1_l71qf")
+
+[node name="Idle" type="Node" parent="."]
+
+[node name="Attack" type="Node" parent="."]
+
+[node name="Walk" type="Node" parent="."]

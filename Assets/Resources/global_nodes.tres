@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="GlobalNodes" load_steps=2 format=3 uid="uid://ct0xfxbxnad6h"]
+
+[ext_resource type="Script" path="res://Assets/Resources/global_nodes.gd" id="1_ohsui"]
+
+[resource]
+script = ExtResource("1_ohsui")

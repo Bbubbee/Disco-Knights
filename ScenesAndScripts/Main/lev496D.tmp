@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgysxw5bc3nuc"]
+
+[ext_resource type="Script" path="res://ScenesAndScripts/Main/level.gd" id="1_cxs5d"]
+[ext_resource type="PackedScene" uid="uid://4j6rgvk6bnyu" path="res://ScenesAndScripts/Control/conductor.tscn" id="2_ahisq"]
+[ext_resource type="AudioStream" uid="uid://be5bq6q174ndh" path="res://Assets/Audio/Music/disco-music.mp3" id="3_c2iep"]
+[ext_resource type="PackedScene" uid="uid://oeobihqqd5nn" path="res://ScenesAndScripts/Enemies/enemy.tscn" id="4_rw5ul"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_cxs5d")
+
+[node name="Conductor" parent="." instance=ExtResource("2_ahisq")]
+stream = ExtResource("3_c2iep")
+volume_db = -10.0
+bpm = null
+measures = null
+
+[node name="Enemy" parent="." instance=ExtResource("4_rw5ul")]
