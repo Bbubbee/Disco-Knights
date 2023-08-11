@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdxcg63iv8fkt"]
+
+[ext_resource type="Script" path="res://ScenesAndScripts/Control/Interface.gd" id="1_6ej1q"]
+[ext_resource type="PackedScene" uid="uid://kpgkykaramh5" path="res://ScenesAndScripts/Control/lifebar.tscn" id="2_804yp"]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="Interface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ej1q")
+
+[node name="Lifebar" parent="Interface" instance=ExtResource("2_804yp")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -239.0
+offset_top = -75.0
+offset_right = 240.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[editable path="Interface/Lifebar"]

@@ -57,6 +57,3 @@ func attack():
 func _contacting_player(direction): 
 	emit_signal("contacting_player", direction)
 
-func _finished_contacting_player(): 
-	emit_signal("contacting_player", "null")
-
