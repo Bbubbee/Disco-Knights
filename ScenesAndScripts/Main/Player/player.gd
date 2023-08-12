@@ -2,13 +2,14 @@ extends Node2D
 
 var GLOBAL_NODES = preload("res://Assets/Resources/global_nodes.tres")
 @onready var animation_player = $AnimationPlayer
-
+signal hp_changed
 # For parrys. 
 @onready var parry_timer = $ParryTimer
 var taking_damage
 
 # Health. 
-signal hp_changed
+
+signal test_sig
 var max_hp: int = 100
 var hp: int = max_hp
 
@@ -47,5 +48,4 @@ func _parry():
 func _take_damage(damage: int):
 	print("take damage!")
 	hp -= max(hp-damage, 0)
-	emit_signal("hp_changed")
 	

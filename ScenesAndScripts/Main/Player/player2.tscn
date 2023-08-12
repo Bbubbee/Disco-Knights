@@ -1,0 +1,177 @@
+[gd_scene load_steps=11 format=3 uid="uid://hrdajn54tkni"]
+
+[ext_resource type="Script" path="res://ScenesAndScripts/Main/Player/player.gd" id="1_l3hl4"]
+[ext_resource type="Texture2D" uid="uid://hyexx12c57mg" path="res://Assets/Art/Player/disco-knight-spritesheet.png" id="2_gd3ww"]
+[ext_resource type="Script" path="res://ScenesAndScripts/Loose/hitboxes.gd" id="3_spm1l"]
+[ext_resource type="Script" path="res://ScenesAndScripts/Loose/hurtbox.gd" id="4_4a1ds"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5koyf"]
+radius = 558.0
+height = 1116.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2yfd"]
+radius = 314.0
+height = 980.0
+
+[sub_resource type="Animation" id="Animation_u0rt5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Hitbox/HitboxCollider:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yke6q"]
+resource_name = "attack_left"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Hitbox/HitboxCollider:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_tuyvd"]
+resource_name = "attack_right"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Hitbox/HitboxCollider:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n07cl"]
+_data = {
+"RESET": SubResource("Animation_u0rt5"),
+"attack_left": SubResource("Animation_yke6q"),
+"attack_right": SubResource("Animation_tuyvd")
+}
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_l3hl4")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_gd3ww")
+hframes = 2
+vframes = 2
+
+[node name="Hitbox" type="Area2D" parent="Sprite"]
+script = ExtResource("3_spm1l")
+
+[node name="HitboxCollider" type="CollisionShape2D" parent="Sprite/Hitbox"]
+position = Vector2(104, -240)
+shape = SubResource("CapsuleShape2D_5koyf")
+disabled = true
+
+[node name="Hurtbox" type="Area2D" parent="Sprite"]
+script = ExtResource("4_4a1ds")
+
+[node name="HurtboxCollider" type="CollisionShape2D" parent="Sprite/Hurtbox"]
+position = Vector2(6, -182)
+shape = SubResource("CapsuleShape2D_i2yfd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_n07cl")
+}
+
+[node name="ParryTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]

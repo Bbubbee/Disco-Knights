@@ -21,3 +21,7 @@ position = Vector2(0, 181)
 position = Vector2(282, 602)
 
 [node name="GUIV2" parent="." instance=ExtResource("6_p1caa")]
+
+[connection signal="hp_changed" from="Player" to="GUIV2" method="_on_player_hp_changed"]
+
+[editable path="GUIV2"]
